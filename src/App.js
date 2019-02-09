@@ -24,12 +24,12 @@ class App extends Component {
       userName: evt.target.value
     })
 // to test if state has changed put console.log here and add a character
-console.log(this.state.payloads)
+console.log("state after update", this.state.payloads)
   }
 
   // this actiob will fire once the user click the submit button. It will take the user name that was entered call the fetch and transformation functions. 
   retreiveTransformAndSaveData() {
-    this.setState({submit: true});
+    this.setState({submitClicked: true});
     getInfoFromApi()
     .then(transformedData => this.setState({payloads: transformedData}))
     .catch((error) => this.setState({errorMessage: error})) 
@@ -38,14 +38,14 @@ console.log(this.state.payloads)
 
   
 
-
+//  result = <DisplayInfo repos={this.state.payloads} />
   render() {
     //if username is empty AND repos is empty (this will the check for when to display error and when to display info )
       const displayOptions = () => {
         let result;
         console.log('entered')
         if (this.state.submitClicked && this.state.payloads ) {
-          result = <DisplayInfo repos={this.state.payloads} />
+        
         }
         else if (this.state.submitClicked && !this.state.payloads){
         // add the prs vs repos here
