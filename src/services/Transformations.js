@@ -14,11 +14,19 @@
  
     export const tranformToPRs = (allPrData) => {
        const getInfoOnPrs = allPrData.filter(event => event.type === "PullRequestEvent").map(pullRequestEvent => {
+        //this is a check to see if PR is open/ closed and merged/ closed and not merged
+        let status = pullRequestEvent.payload.pull_request.state;
+        if (status === "closed" && pullRequestEvent.payload.pull_request.merged) {
+          status = "Merged";
+        }
+        
+        
+        
            return ( {
                "PrTitle" : pullRequestEvent.payload.pull_request.title,
                "id" : pullRequestEvent.id, //this is for testing purposes
                "PrLink": pullRequestEvent.payload.pull_request.html_url,
-               "status": "TBD"
+               "status": status
              }
            )
          }
