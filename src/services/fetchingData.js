@@ -7,7 +7,8 @@
   
  
    const getInfoFromApi = () => {
-   return (
+   console.log("went into getinfofromAPI");
+    return (
      fetch("https://api.github.com/users/alinadolgoy/events", {
      headers: {
        'Authorization': 'token a9005f9199c1fe08a461aed082b6009e2fc3958b'
@@ -15,8 +16,7 @@
    })
     .then((res) => res.json())
     .then((repoData) => handlePayload(repoData))
-    .then(()=> {throw new Error("error")})
-    .catch((error) => "API call unsuccesfull ")
+    .catch((error) => error)
     
   )}
 
@@ -27,7 +27,7 @@ let relevantData = {
  } 
    relevantData.repos = transformToRepos(allRepoData);
    // relevantData.pullRequests = tranformToPRs(allRepoData);
-    console.log('relevant Data', relevantData)
+    console.log('in handle payload:', relevantData)
 return relevantData;
 }
 //catch on the fetch

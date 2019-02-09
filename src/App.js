@@ -30,24 +30,25 @@ console.log("state after update", this.state.payloads)
   // this actiob will fire once the user click the submit button. It will take the user name that was entered call the fetch and transformation functions. 
   retreiveTransformAndSaveData() {
     this.setState({submitClicked: true});
+    debugger;
     getInfoFromApi()
-    .then(transformedData => this.setState({payloads: transformedData}))
+    //this.setState({payloads: transformedData})
+    .then(transformedData => console.log('success', transformedData))
     .catch((error) => this.setState({errorMessage: error})) 
   }
  
 
   
 
-//  result = <DisplayInfo repos={this.state.payloads} />
+ 
   render() {
     //if username is empty AND repos is empty (this will the check for when to display error and when to display info )
       const displayOptions = () => {
         let result;
-        console.log('entered')
-        if (this.state.submitClicked && this.state.payloads ) {
-        
+        if (this.state.submitClicked && this.state.payloads.length>0 ) {
+          result = <DisplayInfo repos={this.state.payloads} />
         }
-        else if (this.state.submitClicked && !this.state.payloads){
+        else if (this.state.submitClicked && this.state.payloads === 0){
         // add the prs vs repos here
           result = <Error error="This user has no data" />
         }
