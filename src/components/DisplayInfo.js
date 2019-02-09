@@ -1,6 +1,7 @@
 import React from 'react';
 
 const  DisplayInfo = ({repos, pullRequests}) => {
+    
     return (
     <div>
         <h2>Forked Repositories</h2>
@@ -17,6 +18,7 @@ const  DisplayInfo = ({repos, pullRequests}) => {
                     <li>
                         <a href={`${pullRequest.PrLink}`}>{pullRequest.PrTitle}</a>    
                         {pullRequest.status}
+                        {pullRequest.merged}
                     </li>)}
             </ul>   
     </div>
@@ -24,4 +26,4 @@ const  DisplayInfo = ({repos, pullRequests}) => {
 }
 
 export default DisplayInfo
-//test
+
