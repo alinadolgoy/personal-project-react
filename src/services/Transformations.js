@@ -3,8 +3,8 @@
     const getInfoOnRepos = allRepoData.filter(event => event.type === "ForkEvent").map(ForkedEvent => {
        return ( {
           "repoName" : ForkedEvent.payload.forkee.name,
-          "repoLink" : ForkedEvent.payload.forkee.full_name, //should be added to github.com{repolink} 
-          "baseRepo" : ForkedEvent.repo.name //this can be used as the name and to get the link github.com/{baseRepo} aprox
+          "repoLink" : ForkedEvent.payload.forkee.full_name, //note to self: should be added to github.com{repolink} 
+          "baseRepo" : ForkedEvent.repo.name //this can be used as the name and to get the link github.com/{baseRepo} 
                  }
                )
              }

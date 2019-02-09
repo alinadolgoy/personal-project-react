@@ -10,7 +10,10 @@ class App extends Component {
     this.state = {
       submitClicked: false,
       userName: '',
-      payloads: [], 
+      payloads: {
+        repos: [],
+        pullRequests: []
+      }, 
       errorMessage: ''
     }
     this.retreiveTransformAndSaveData = this.retreiveTransformAndSaveData.bind(this);
@@ -23,8 +26,6 @@ class App extends Component {
     this.setState({
       userName: evt.target.value
     })
-// to test if state has changed put console.log here and add a character
-console.log("state after update", this.state.payloads)
   }
 
   // this actiob will fire once the user click the submit button. It will take the user name that was entered call the fetch and transformation functions. 
@@ -38,32 +39,28 @@ console.log("state after update", this.state.payloads)
 
   
 
-//  result = <DisplayInfo repos={this.state.payloads} />
+ 
   render() {
     //if username is empty AND repos is empty (this will the check for when to display error and when to display info )
       const displayOptions = () => {
         let result;
-        console.log('entered')
-        if (this.state.submitClicked && this.state.payloads ) {
-        
+        if (this.state.submitClicked && this.state.payloads.repos.length>0 ) {
+          console.log("went into 1", )
+          result = <DisplayInfo repos={this.state.payloads.repos} pullRequests={this.state.payloads.pullRequests} />
         }
-        else if (this.state.submitClicked && !this.state.payloads){
+        else if (this.state.submitClicked && this.state.payloads === 0){
+          console.log("went into 2")
         // add the prs vs repos here
           result = <Error error="This user has no data" />
         }
         else {
+          console.log("went into 3")
           result =  <Error error="please enter user name and click submit" />
         }
         return result;
       }
       const display = displayOptions();
 
-    // if (this.state.shouldDisplayInfo) {
-    //   willDisplayInfo = <DisplayInfo repos={this.state.payloads.repos} pullRequests={this.state.payloads.pullRequests}/>
-    // }
-    // else {
-    //   willDisplayInfo = <div>Please login</div>
-    // }
 
     return (
         <div className="App"> 
