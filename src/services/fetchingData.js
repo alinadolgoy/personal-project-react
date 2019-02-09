@@ -2,12 +2,11 @@
 
   import React from 'react';
 
-  //import { transformToRepos , tranformToPRs } from './Transformations';
+  import { transformToRepos , tranformToPRs } from './Transformations';
 
   
  
    const getInfoFromApi = () => {
-   console.log("went into getinfofromAPI");
     return (
      fetch("https://api.github.com/users/alinadolgoy/events", {
      headers: {
@@ -23,29 +22,15 @@
   // this function should call the transform functions, and the return one object for the state
 const handlePayload =(allRepoData) => {
 let relevantData = {
-  repos:[]
+  repos:[],
+  pullRequests: []
  } 
    relevantData.repos = transformToRepos(allRepoData);
-   // relevantData.pullRequests = tranformToPRs(allRepoData);
-    console.log('in handle payload:', relevantData)
+   relevantData.pullRequests = tranformToPRs(allRepoData);
+   console.log(relevantData)
 return relevantData;
 }
-//catch on the fetch
 
-  
-
-export const transformToRepos = (allRepoData) => {
-  const getInfoOnRepos = allRepoData.filter(event => event.type === "ForkEvent").map(ForkedEvent => {
-     return ( {
-        "repoName" : ForkedEvent.payload.forkee.name,
-        "repoLink" : ForkedEvent.payload.forkee.full_name, //should be added to github.com{repolink} 
-        "baseRepo" : ForkedEvent.repo.name //this can be used as the name and to get the link github.com/{baseRepo} aprox
-               }
-             )
-           }
-         )
-         return getInfoOnRepos;
-   }
 
 
 export  { getInfoFromApi };
