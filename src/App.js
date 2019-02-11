@@ -13,9 +13,8 @@ class App extends Component {
       payloads: {
         repos: [],
         pullRequests: []
-      }, 
-      errorMessage: ''
-    }
+      }
+        }
     this.retreiveTransformAndSaveData = this.retreiveTransformAndSaveData.bind(this);
     this.updateInputValue = this.updateInputValue.bind(this);
 
@@ -45,16 +44,13 @@ class App extends Component {
       const displayOptions = () => {
         let result;
         if (this.state.submitClicked && this.state.payloads.repos.length>0 ) {
-          console.log("went into 1", )
           result = <DisplayInfo repos={this.state.payloads.repos} pullRequests={this.state.payloads.pullRequests} />
         }
         else if (this.state.submitClicked && this.state.payloads === 0){
-          console.log("went into 2")
         // add the prs vs repos here
           result = <Error error="This user has no data" />
         }
         else {
-          console.log("went into 3")
           result =  <Error error="please enter user name and click submit" />
         }
         return result;
