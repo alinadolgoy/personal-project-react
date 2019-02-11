@@ -1,6 +1,6 @@
 import React from 'react';
 
-const  DisplayInfo = ({repos, pullRequests}) => {
+const  DisplayInfo = ({repos = [], pullRequests = []}) => {
     
     return (
     <div>
