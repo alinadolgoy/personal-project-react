@@ -49,11 +49,11 @@ class App extends Component {
         }
         // if user has repos but not pull requests
         else if (this.state.submitClicked && this.state.payloads.repos.length > 0 && this.state.payloads.pullRequests.length === 0 ){
-          result = <div><DisplayInfo repos={this.state.payloads.repos} /> <Error error="This user has no recent pull requests" /></div>
+          result = <DisplayInfo repos={this.state.payloads.repos} noPrError="This user has no recent pull requests" />
         }
         // if user has pull requests but not repos
         else if (this.state.submitClicked && this.state.payloads.repos.length === 0 && this.state.payloads.pullRequests.length > 0) {
-          result = <div><DisplayInfo pullRequests={this.state.payloads.pullRequests} /> <Error error="This user has no recent forked repos" /></div>
+          result = <DisplayInfo pullRequests={this.state.payloads.pullRequests} noRepoError="This user has no recent forked repos" /> 
         }
         //if user has no forked repos and no pull reuqests
         else if (this.state.submitClicked && this.state.payloads.repos.length === 0 && this.state.payloads.pullRequests.length === 0) {
@@ -61,7 +61,7 @@ class App extends Component {
         }
         // if userName has not been submitted yet 
         else {
-          result =  <Error error="please enter user name and click submit" />
+          result = <Error error="please enter user name and click submit" />
         }
         return result;
       }
