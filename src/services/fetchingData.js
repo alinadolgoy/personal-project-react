@@ -1,12 +1,7 @@
   
-
-  import React from 'react';
-
-  import { transformToRepos , tranformToPRs } from './Transformations';
-
-  
+import handlePayload from './handlePayload.js'
  
-   const getInfoFromApi = (userName) => {
+   export const getInfoFromApi = (userName) => {
     return (
      fetch(`https://api.github.com/users/${userName}/events`, {
      headers: {
@@ -19,18 +14,8 @@
     
   )}
 
-  // this function should call the transform functions, and the return one object for the state
-const handlePayload =(allRepoData) => {
-let relevantData = {
-  repos:[],
-  pullRequests: []
- } 
-   relevantData.repos = transformToRepos(allRepoData);
-   relevantData.pullRequests = tranformToPRs(allRepoData);
-   console.log(relevantData)
-return relevantData;
-}
 
 
 
-export  { getInfoFromApi };
+
+  
