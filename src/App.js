@@ -4,6 +4,23 @@ import DisplayInfo from './components/DisplayInfo';
 import { getInfoFromApi }  from './services/fetchingData';
 import Error from './components/ErrorMessage';
 import { connect } from 'react-redux';
+
+const mapStateToProps = (state) => {
+return {
+  submitClicked: state.submitClicked,
+  userName: state.userName,
+  payloads: {
+    repos: [],
+    pullRequests: []
+    }
+  }
+}
+
+const mapDispatchToProps = () => {
+  
+}
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -27,13 +44,15 @@ class App extends Component {
     })
   }
 
-  // this actiob will fire once the user click the submit button. It will take the user name that was entered call the fetch and transformation functions. 
-  retreiveTransformAndSaveData() {
-    this.setState({submitClicked: true});
-    getInfoFromApi(this.state.userName)
-    .then(transformedData => this.setState({payloads: transformedData}))
-    .catch((error) => this.setState({errorMessage: error})) 
-  }
+
+  //moved to actions
+  // // this actiob will fire once the user click the submit button. It will take the user name that was entered call the fetch and transformation functions. 
+  // retreiveTransformAndSaveData() {
+  //   this.setState({submitClicked: true});
+  //   getInfoFromApi(this.state.userName)
+  //   .then(transformedData => this.setState({payloads: transformedData}))
+  //   .catch((error) => this.setState({errorMessage: error})) 
+  // }
  
 
   
