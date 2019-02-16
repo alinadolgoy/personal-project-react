@@ -19,9 +19,6 @@
         if (status === "closed" && pullRequestEvent.payload.pull_request.merged) {
           status = "Merged";
         }
-        
-        
-        
            return ( {
                "PrTitle" : pullRequestEvent.payload.pull_request.title,
                "id" : pullRequestEvent.id, //this is for testing purposes

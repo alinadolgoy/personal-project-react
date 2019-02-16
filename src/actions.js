@@ -15,6 +15,7 @@ export const githubAPIRequest = () => (dispatch) => { //user name goes in first 
       //((error) => error)
     
 }
+export const updateUserNameAction = (userName) => ({type: UPDATE_USER_NAME, payload: userName})
 
 
 //keeping in case i need it in the future. apologies if i forget to erase this
@@ -28,5 +29,3 @@ export const githubAPIRequest = () => (dispatch) => { //user name goes in first 
 //   }
 
 
-export const updateUserNameAction = (userName) => ({type: UPDATE_USER_NAME, payload: userName})
-export const updateSubmitClicked = (error) => ({ type: UPDATE_ERROR, payload: error }) 

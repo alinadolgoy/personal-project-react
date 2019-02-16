@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import { reducer } from './reduxFiles/reducers';
+import { handleDataFromGithub, textUpdates } from './reducers';
 import { Provider, connect } from 'react-redux';
 
-const store = createStore(reducer, applyMiddleware(thunkMiddleware));
+const rootReducter = combineReducers({handleDataFromGithub, textUpdates})
+const store = createStore(rootReducter, applyMiddleware(thunkMiddleware));
 
 
 ReactDOM.render(

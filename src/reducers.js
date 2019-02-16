@@ -1,7 +1,6 @@
-import { handlePayload }  from './services/handlePayload'
+import handlePayload   from './services/handlePayload'
 import { REQUEST_GITHUB_DATA_PENDING, REQUEST_GITHUB_DATA_SUCCESS, REQUEST_GITHUB_DATA_FAILED, UPDATE_SUBMIT_CLICKED, UPDATE_USER_NAME } from './constants'; 
 
-export const reducer = () => 'state';
 
 
 export const handleDataFromGithub = (state , action ={}) => {

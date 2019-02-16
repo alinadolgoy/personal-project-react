@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import DisplayInfo from './components/DisplayInfo';
-import { getInfoFromApi }  from './services/fetchingData';
-import Error from './components/ErrorMessage';
+// import DisplayInfo from './components/DisplayInfo';
+// import { getInfoFromApi }  from './services/fetchingData';
+// import Error from './components/ErrorMessage';
 import { connect } from 'react-redux';
 import { displayOptions } from '../services/displayOptions';
-import { updateUserNameAction , githubAPIRequest } from '../reduxFiles/actions';
+import { updateUserNameAction , githubAPIRequest } from './actions';
 
 const mapStateToProps = (state) => {
 return {
@@ -43,6 +43,7 @@ class App extends Component {
   this.props.updateUserName(evt.target.value)
   }
  
+  
   render() {
     // to decide what to display the display options function is being called and is being provided with all the props that were mapped 
   const display = displayOptions(this.props);

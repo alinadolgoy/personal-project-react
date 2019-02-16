@@ -5,7 +5,7 @@ import { transformToRepos , tranformToPRs } from './Transformations';
 
   // this function should call the transform functions, and the return one object for the state
 
-export const handlePayload =(allRepoData) => {
+const handlePayload =(allRepoData) => {
     let relevantData = {
       repos:[],
       pullRequests: []
@@ -15,3 +15,5 @@ export const handlePayload =(allRepoData) => {
        console.log(relevantData)
     return relevantData;
     }
+
+    export default handlePayload
