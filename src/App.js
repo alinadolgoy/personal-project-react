@@ -4,13 +4,14 @@ import './App.css';
 // import { getInfoFromApi }  from './services/fetchingData';
 // import Error from './components/ErrorMessage';
 import { connect } from 'react-redux';
-import { displayOptions } from '../services/displayOptions';
+import { displayOptions } from './services/displayOptions';
 import { updateUserNameAction , githubAPIRequest } from './actions';
 
 const mapStateToProps = (state) => {
 return {
   submitClicked: state.submitClicked,
   userName: state.userName,
+  error: state.error,
   payloads: {
     repos: [],
     pullRequests: []
@@ -25,23 +26,25 @@ return {
 }
 }
 
-// change this to a stateless component
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      submitClicked: false,
-      userName: '',
-      payloads: {
-        repos: [],
-        pullRequests: []
-      }
-        }
-  }
-
-  updateInputValue(evt) {
+const updateInputValue = (evt) => {
   this.props.updateUserName(evt.target.value)
   }
+
+
+class App extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     submitClicked: false,
+  //     userName: '',
+  //     payloads: {
+  //       repos: [],
+  //       pullRequests: []
+  //     }
+  //       }
+  // }
+
+
  
   
   render() {

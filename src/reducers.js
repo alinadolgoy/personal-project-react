@@ -1,9 +1,9 @@
 import handlePayload   from './services/handlePayload'
 import { REQUEST_GITHUB_DATA_PENDING, REQUEST_GITHUB_DATA_SUCCESS, REQUEST_GITHUB_DATA_FAILED, UPDATE_SUBMIT_CLICKED, UPDATE_USER_NAME } from './constants'; 
 
+const initialState = {}
 
-
-export const handleDataFromGithub = (state , action ={}) => {
+export const handleDataFromGithub = (state = { initialState } , action ={}) => {
     switch(action.type) {
         case REQUEST_GITHUB_DATA_PENDING:
             return Object.assign( {}, state, { submitClicked: true })
@@ -17,7 +17,7 @@ export const handleDataFromGithub = (state , action ={}) => {
         }    
     }
 
-export const textUpdates = (state, action ={}) => {
+export const textUpdates = (state = { initialState }, action ={}) => {
     switch(action.type) {
         case UPDATE_USER_NAME: 
             return Object.assing({}, state, {userName: action.payload})
@@ -25,3 +25,4 @@ export const textUpdates = (state, action ={}) => {
             return state;
     }
 }
+
