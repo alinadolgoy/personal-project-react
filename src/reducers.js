@@ -7,11 +7,12 @@ export const reducer = () => 'state';
 export const handleDataFromGithub = (state , action ={}) => {
     switch(action.type) {
         case REQUEST_GITHUB_DATA_PENDING:
-            return Object.assign( {}, state, { isPending: true })
+            return Object.assign( {}, state, { submitClicked: true })
         case REQUEST_GITHUB_DATA_SUCCESS:
-            return Object.assign( {} , state , {payload: handlePayload(action.payload), isPending: false} ) //handlepayload
+        //my reason for adding the submit clicked in the other two cases is in case it never goes into pending
+            return Object.assign( {} , state , {payload: handlePayload(action.payload), submitClicked: true} ) //handlepayload
         case REQUEST_GITHUB_DATA_FAILED:
-            return Object.assign( {} , state , {error: action.payload , isPending: false} )
+            return Object.assign( {} , state , {error: action.payload , submitClicked: true} )
         default:
             return state;
         }    
@@ -21,10 +22,7 @@ export const textUpdates = (state, action ={}) => {
     switch(action.type) {
         case UPDATE_USER_NAME: 
             return Object.assing({}, state, {userName: action.payload})
-        case UPDATE_SUBMIT_CLICKED: 
-            return Object.assign({}, state, {error: action.payload})
          default:
             return state;
-
     }
 }

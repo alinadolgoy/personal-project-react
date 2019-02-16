@@ -1,4 +1,6 @@
   
+
+// this file should be deleted
 import handlePayload from './handlePayload.js'
  
    export const getInfoFromApi = (userName) => {

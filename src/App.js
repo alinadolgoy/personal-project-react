@@ -21,7 +21,7 @@ return {
 const mapDispatchToProps = (dispatch) => {
 return {
   updateUserName: (userName) => dispatch(updateUserNameAction(userName)),
-  onSubmitClick: () => dispatch(githubAPIRequest(this.props.userName))
+  onSubmitClicked: () => dispatch(githubAPIRequest(this.props.userName))
 }
 }
 
@@ -40,7 +40,8 @@ class App extends Component {
   }
 
   updateInputValue(evt) {
-  this.props.updateUserName(evt.target.value)  }
+  this.props.updateUserName(evt.target.value)
+  }
  
   render() {
     // to decide what to display the display options function is being called and is being provided with all the props that were mapped 
@@ -48,7 +49,7 @@ class App extends Component {
   return (
         <div className="App"> 
          UserName: <input type="text" name='username' value={this.props.inputValue} onChange={this.updateInputValue}/>
-         <button onClick={this.onSubmitClick}>Submit</button> 
+         <button onClick={this.props.onSubmitClicked}>Submit</button> 
           {display}
         </div>
     );
