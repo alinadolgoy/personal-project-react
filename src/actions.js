@@ -1,4 +1,4 @@
-import  { REQUEST_GITHUB_DATA_PENDING , REQUEST_SOMETHING_SUCCESS , REQUEST_SOMETHING_FAILED } from './constants';
+import  { REQUEST_GITHUB_DATA_PENDING , REQUEST_GITHUB_DATA_SUCCESS , REQUEST_GITHUB_DATA_FAILED , UPDATE_USER_NAME , UPDATE_ERROR} from './constants';
 
 export const githubAPIRequest = () => (dispatch) => { //user name goes in first argument?
     dispatch({type: REQUEST_GITHUB_DATA_PENDING}); // DO I NEED THIS? if so, the reducer should just change the submit clicked. or should this be a "pending message"?
@@ -8,9 +8,9 @@ export const githubAPIRequest = () => (dispatch) => { //user name goes in first 
         }
       })
       .then(res => res.json())
-      .then(data => dispatch({ type: REQUEST_SOMETHING_SUCCESS, payload: data }))
+      .then(data => dispatch({ type: REQUEST_GITHUB_DATA_SUCCESS, payload: data }))
           //(repoData) => handlePayload(repoData))
-      .catch(error => dispatch({type: REQUEST_SOMETHING_FAILED, payload: error}))
+      .catch(error => dispatch({type: REQUEST_GITHUB_DATA_FAILED, payload: error}))
       
       //((error) => error)
     
@@ -28,4 +28,5 @@ export const githubAPIRequest = () => (dispatch) => { //user name goes in first 
 //   }
 
 
-  setUserNAme
+export const updateUserNameAction = (userName) => ({type: UPDATE_USER_NAME, payload: userName})
+export const updateSubmitClicked = (error) => ({ type: UPDATE_ERROR, payload: error }) 
