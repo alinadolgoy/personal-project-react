@@ -20,8 +20,10 @@ return {
 }
 
 const mapDispatchToProps = (dispatch) => {
-return {
+  debugger
+  return {
   updateUserName: (userName) => dispatch(updateUserNameAction(userName)),
+  
   onSubmitClicked: (userName) => dispatch(githubAPIRequest(userName))
 }
 }
