@@ -20,7 +20,7 @@ export const handleDataFromGithub = (state = { initialState } , action ={}) => {
 export const textUpdates = (state = { initialState }, action ={}) => {
     switch(action.type) {
         case UPDATE_USER_NAME: 
-            return Object.assing({}, state, {userName: action.payload})
+            return {...state, userName: action.payload}
          default:
             return state;
     }

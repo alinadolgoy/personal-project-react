@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { handleDataFromGithub, textUpdates } from './reducers';
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux';
 
 const rootReducter = combineReducers({handleDataFromGithub, textUpdates})
 const store = createStore(rootReducter, applyMiddleware(thunkMiddleware));
