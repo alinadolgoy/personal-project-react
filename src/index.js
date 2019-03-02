@@ -8,7 +8,7 @@ import thunkMiddleware from 'redux-thunk';
 import { handleDataFromGithub, textUpdates } from './reducers';
 import { Provider } from 'react-redux';
 
-const rootReducer = combineReducers({handleDataFromGithub, textUpdates});
+const rootReducer = combineReducers({alina: handleDataFromGithub, textUpdates});
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddleware))
 );

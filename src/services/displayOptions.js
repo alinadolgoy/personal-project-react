@@ -4,7 +4,7 @@
    
    //if username is empty AND repos is empty (this will the check for when to display error and when to display info )
     export const displayOptions = (props) => {
-      console.log('went into display options')
+      console.log('went into display options:', props)
         let result;
         //if there was an error during the data fetch
         if (props.submitClicked && props.error.length>0) {
