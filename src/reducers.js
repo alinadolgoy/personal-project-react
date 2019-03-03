@@ -11,15 +11,13 @@ const initialState = {
     submitClicked: false,
     userName: '',
     error: '',
-    payloads: {
+    gitHubInfo: {
         repos: [],
         pullRequests: []
     }
 }
 
-export const handleDataFromGithub = (state = {
-    initialState
-}, action = {}) => {
+export const handleDataFromGithub = (state = { initialState }, action = {}) => {
     switch (action.type) {
         case REQUEST_GITHUB_DATA_PENDING:
             return Object.assign({}, state, {
@@ -28,7 +26,7 @@ export const handleDataFromGithub = (state = {
         case REQUEST_GITHUB_DATA_SUCCESS:
             //my reason for adding the submit clicked in the other two cases is in case it never goes into pending
             return Object.assign({}, state, {
-                payloads: handlePayload(action.payload),
+                gitHubInfo: handlePayload(action.payload),
                 submitClicked: true
             }) //handlepayload
         case REQUEST_GITHUB_DATA_FAILED:
@@ -48,7 +46,7 @@ export const textUpdates = (state = {
         case UPDATE_USER_NAME:
             return {
                 ...state,
-                userName: action.payloads
+                userName: action.payload
             }
         default:
             return state;
