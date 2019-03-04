@@ -1,6 +1,4 @@
-import React, {
-  Component
-} from 'react';
+import React from 'react';
 import './App.css';
 // import DisplayInfo from './components/DisplayInfo';
 // import { getInfoFromApi }  from './services/fetchingData';
@@ -11,17 +9,18 @@ import { updateUserNameAction, githubAPIRequest } from './actions';
 
 const mapStateToProps = state => {
   return {
-    submitClicked: state.handleDataFromGithub.initialState.submitClicked,
+    submitClicked: state.submitClicked,
     userName: state.userName,
     error: state.error,
     payloads: {
-      repos: state.handleDataFromGithub.initialState.gitHubInfo.repos,
-      pullRequests: state.handleDataFromGithub.initialState.gitHubInfo.pullRequests
+      repos: state.gitHubInfo.repos,
+      pullRequests: state.gitHubInfo.pullRequests
     }
   }
 }
 
 //ask Fatin - why is there intial state in the state
+//state is not updating!
 
 
 const mapDispatchToProps = dispatch => {
@@ -53,20 +52,28 @@ const App = (props) => {
   }
   // to decide what to display the display options function is being called and is being provided with all the props that were mapped 
   //  console.log("before going into display function:", this.state.props);
+  console.log('props before going into display', props)
+  const display = displayOptions(props);
 
   return (
     < div className="App" >
-      UserName: < input type="text"
-        name='username'
-        value={props.inputValue}
-        onChange={updateInputValue} />
-      <button onClick={props.onSubmitClicked} > Submit </button >
+      <div className="infoInput">
+        UserName: < input
+          type="text"
+          name='username'
+          value={props.inputValue}
+          onChange={updateInputValue} />
+        <button onClick={props.onSubmitClicked} > Submit </button >
+      </div>
+      <div>
+        {display}
+      </div>
     </div>
   );
 
 }
 
-//{display}
+
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
